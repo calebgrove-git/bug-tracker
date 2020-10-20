@@ -1,0 +1,21 @@
+.bugcard {
+  background-color: #fcdab7;
+  box-shadow: 2px 2px 2px var(--primary-color);
+  text-align: center;
+  margin: 10px;
+  min-width: 275px;
+  min-height: 200px;
+  border-radius: 5px;
+}
+.bugcard:hover {
+  transition: all 0.3s;
+  transform: scale(1.05);
+  box-shadow: 3px 3px 3px var(--primary-color);
+}
+.name,
+.version,
+.priority {
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
