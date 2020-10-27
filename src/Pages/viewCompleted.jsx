@@ -16,8 +16,8 @@ let params = useParams()
 
  let filteredBugs = bugs
 if(params.priority!==undefined){filteredBugs=filteredBugs.filter(bug => parseInt(params.priority) === parseInt(bug.priority))}
- let sortedBugs = filteredBugs
-if(filteredBugs!==undefined){sortedBugs=sortedBugs.filter(bug=> false===bug.completed)}
+let sortedBugs = filteredBugs
+if(filteredBugs!==undefined){sortedBugs=sortedBugs.filter(bug=> true===bug.completed)}
  function bugClicked(name){
     setDisplayBug({
         isDisplayed:!displayBug.isDisplayed,

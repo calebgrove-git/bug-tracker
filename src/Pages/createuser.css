@@ -1,0 +1,43 @@
+.create-user {
+  padding: 1% 5%;
+  width: 60vw;
+  background-color: var(--primary-color);
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 100;
+}
+
+.create-user h1 {
+  min-width: 100%;
+  text-align: center;
+  font-size: 2.6rem;
+  border-bottom: 1px groove black;
+}
+
+.create-user form {
+  min-width: 80%;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  column-gap: 20px;
+  row-gap: 20px;
+}
+.create-user label {
+  text-align: right;
+  font-size: 1.6rem;
+}
+
+.create-user input,
+textarea,
+select {
+  border-radius: 5px;
+  border: none;
+}
+.create-user button {
+  grid-column: 2;
+}
+.create-user option {
+  color: black;
+}

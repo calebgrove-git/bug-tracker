@@ -1,9 +1,38 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import { postBug, patchBug} from '../Reducers/bug'
+import {useHistory} from 'react-router-dom'
 import './bugForm.css'
 import Bug from '../Model/bug'
-
 export default function CreateBug(props){
-const [bugOptions, setBugOptions] = useState(new Bug(props.bug))
+const history = useHistory()
+const [bugOptions, setBugOptions] = useState(new Bug(props.bug||Bug))
+const dispatch = useDispatch()
+const user = useSelector(state=>state.user)
+const createBug=event=>{
+    event.preventDefault();
+    if(props.title === "Create Bug"){
+        dispatch(postBug(bugOptions));
+        history.push('/')}
+    else{
+        dispatch(patchBug(bugOptions))
+        history.push('/')
+    }
+}
+useEffect(() => {
+    if(props.title==="Edit Bug"){setBugOptions({
+        ...bugOptions, 
+        id: props.bug.id,
+        company: user.company
+    })}
+    else{setBugOptions({
+        ...bugOptions, 
+        name: "",
+        company: user.company,
+        creator: user.email
+        })}
+}, [])
+
 function inputChanged(e){
     setBugOptions({
         ...bugOptions, 
@@ -16,7 +45,7 @@ function inputChanged(e){
             <h1>
             {props.title}
             </h1>
-            <form>
+            <form onSubmit={createBug} >
                 <label htmlFor="name">Name:</label>
                 <input style={{color:'black'}} type="text" name="name" id="name" placeholder='bug name' required onChange={inputChanged} value={bugOptions.name}/>
                 <label htmlFor="details">Details:</label>
@@ -29,19 +58,10 @@ function inputChanged(e){
                     <option value="2">Medium</option>
                     <option value="3">Low</option>
                 </select>
-                <label htmlFor="assigned">Assigned:</label>
-                <select style={{color:'black'}} name="assigned" id="assigned" required onChange={inputChanged} value={bugOptions.assigned}>
-                    <option>Caleb</option>
-                </select>
                 <label htmlFor="version">Version:</label>
-                <input style={{color:'black'}} type="text" name="version" id="version" placeholder='Version' required onChange={inputChanged} value={bugOptions.details}/>
+                <input style={{color:'black'}} type="text" name="version" id="version" placeholder='Version' required onChange={inputChanged} value={bugOptions.version}/>
                 <button type="submit">{props.title}</button>
             </form>
         </div>
     )
-}
-CreateBug.defaultProps={
-    bugOptions:{
-        name:''
-    }
 }

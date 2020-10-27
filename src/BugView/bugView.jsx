@@ -2,12 +2,14 @@ import React, {useState} from 'react'
 import './bugView.css'
 import BugViewCard from './bugViewCard'
 import {useDispatch} from 'react-redux'
-import {markCompleted} from '../Reducers/bug'
+import {completeBug,deleteBug} from '../Reducers/bug'
+import {useHistory} from 'react-router-dom'
 import Priority from '../Reducers/priority'
 import Edit from '../EditBug/edit'
 import EditBug from '../BugCreate/bugForm'
 import Bug from '../Model/bug'
 export default (props)=>{
+    const history = useHistory()
     const bug = new Bug(props.bug)
     const dispatch = useDispatch()
     const {level} = Priority(props.bug.priority)
@@ -16,7 +18,12 @@ export default (props)=>{
             setEditBug(!editBug)
     }
     function deletes(){
-
+        dispatch(deleteBug(props.bug))
+        history.push('/')
+    }
+    const markComplete = () =>{
+        dispatch(completeBug(props.bug))
+        history.push('/')
     }
     return(
         <>
@@ -30,7 +37,7 @@ export default (props)=>{
             <BugViewCard title='Creator' info={props.bug.creator}/>
             <BugViewCard title='Version' info={props.bug.version}/>
             <BugViewCard title='Time' info={props.bug.time}/>
-            <button onClick={()=>dispatch(markCompleted())}>Mark Complete</button>
+            <button onClick={markComplete}>Mark Complete</button>
         </div>
         {editBug && <EditBug title='Edit Bug' bug={bug} close={edit}/>}
         </>
