@@ -4,3 +4,11 @@
   top: 0;
   margin: 10px;
 }
+
+@media only screen and (max-width: 600px) {
+  .edit {
+    margin-top: 10vh;
+    top: auto;
+    left: auto;
+  }
+}

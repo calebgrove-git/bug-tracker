@@ -41,3 +41,15 @@ select {
 .create-user option {
   color: black;
 }
+@media only screen and (max-width: 600px) {
+  .create-user {
+    margin-left: 20vw;
+    width: 50vw;
+    margin-right: 10vw;
+  }
+  .create-user form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

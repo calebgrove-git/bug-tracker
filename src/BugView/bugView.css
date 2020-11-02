@@ -25,3 +25,15 @@ h1 {
   right: 0;
   margin: 10px;
 }
+
+@media only screen and (max-width: 600px) {
+  .bug-view {
+    margin-left: 10vw;
+  }
+  .close {
+    display: none;
+  }
+  .bug-view h1 {
+    padding-bottom: 10vh;
+  }
+}
