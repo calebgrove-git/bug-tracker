@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../Reducers/authentication';
 import { fetchUsers, createUser } from '../Reducers/user';
 
-export default () => {
+export default (props) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const [formInput, setFormInput] = useState({
@@ -68,9 +68,21 @@ export default () => {
             <div style={{ width: '100%' }}></div>
             <button type='submit'>Login</button>
             <div style={{ width: '100%' }}></div>
-            <button type='reset' onClick={() => setCreate(!create)}>
-              Create User
+            <button
+              onClick={() => props.about(true)}
+              style={{ marginLeft: '5px', marginRight: '5px' }}
+            >
+              About
             </button>
+            <div style={{ width: '100%' }}></div>
+            <button
+              type='reset'
+              onClick={() => setCreate(!create)}
+              style={{ marginLeft: '5px', marginRight: '5px' }}
+            >
+              Create Account
+            </button>
+            <div style={{ width: '100%' }}></div>
           </form>
         </div>
       ) : (

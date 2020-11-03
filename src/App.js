@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Login from './Login/login';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
@@ -8,13 +8,15 @@ import CreateBug from './BugCreate/bugForm';
 import Dashboard from './Pages/dashboard';
 import CreateUser from './Pages/createUser';
 import ViewCompleted from './Pages/viewCompleted';
+import About from './Pages/about';
 
 function App() {
   const { auth } = useSelector((state) => state);
+  const [about, setAbout] = useState(false);
   return (
     <BrowserRouter>
       {!auth.loggedIn ? (
-        <Login />
+        <>{!about ? <Login about={setAbout} /> : <About about={setAbout} />}</>
       ) : (
         <>
           <Sidebar />
