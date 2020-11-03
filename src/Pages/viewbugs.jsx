@@ -30,6 +30,9 @@ export default () => {
       name: name,
     });
   }
+  if (sortedBugs === undefined) {
+    sortedBugs = [];
+  }
   return (
     <div className='page-container'>
       {sortedBugs.map((bug, key) => (

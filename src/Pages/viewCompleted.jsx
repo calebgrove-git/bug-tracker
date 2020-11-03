@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import BugCard from '../BugCard/Bugcard.jsx';
 import './viewbugs.css';
 import BugView from '../BugView/bugView';
+import Bug from '../Model/bug';
 import { useParams } from 'react-router-dom';
 export default () => {
   let params = useParams();
@@ -29,6 +30,9 @@ export default () => {
       isDisplayed: !displayBug.isDisplayed,
       name: name,
     });
+  }
+  if (sortedBugs === undefined) {
+    sortedBugs = [];
   }
   return (
     <div className='page-container'>

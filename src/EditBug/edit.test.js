@@ -9,14 +9,10 @@ spy.mockReturnValue({ username: 'test' });
 const spy2 = jest.spyOn(redux, 'useSelector');
 spy2.mockReturnValue({ username: 'test' });
 
-describe('Card component', () => {
+describe('Edit component', () => {
   it('renders without crashing', () => {
     ReactDOM.render(<Edit bug={Bug} />, document.createElement('div'));
     ReactDOM.unmountComponentAtNode(document.createElement('div'));
-  });
-  it('renders the UI as expected', () => {
-    renderer.create(<Edit bug={Bug} />).toJSON();
-    expect(renderer).toMatchSnapshot();
   });
   it('renders the UI as expected', () => {
     renderer.create(<Edit bug={Bug} />).toJSON();

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BugCard component renders the UI as expected 1`] = `
+exports[`About component renders the UI as expected 1`] = `
 Object {
   "_Scheduler": Object {
     "unstable_IdlePriority": 5,

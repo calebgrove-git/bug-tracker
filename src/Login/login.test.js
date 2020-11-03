@@ -17,14 +17,10 @@ beforeEach(() => {
   redux.useDispatch.mockClear();
 });
 
-describe('Card component', () => {
+describe('Login component', () => {
   it('renders without crashing', () => {
     ReactDOM.render(<Login />, document.createElement('div'));
     ReactDOM.unmountComponentAtNode(document.createElement('div'));
-  });
-  it('renders the UI as expected', () => {
-    renderer.create(<Login />).toJSON();
-    expect(renderer).toMatchSnapshot();
   });
   it('renders the UI as expected', () => {
     renderer.create(<Login />).toJSON();

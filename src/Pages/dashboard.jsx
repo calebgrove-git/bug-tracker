@@ -18,7 +18,7 @@ export default () => {
   let medCount = 0;
   let lowCount = 0;
   let filteredBugs = bugs;
-  if (filteredBugs !== undefined) {
+  if (Array.isArray(filteredBugs)) {
     filteredBugs = filteredBugs.filter((bug) => bug.completed === false);
   }
 
@@ -27,7 +27,7 @@ export default () => {
       return bug.priority.toString() === priority.toString();
     });
   }
-  if (bugs !== undefined) {
+  if (Array.isArray(bugs) && Array.isArray(filteredBugs)) {
     highCount = filterBugs(1);
     medCount = filterBugs(2);
     lowCount = filterBugs(3);
