@@ -1,6 +1,6 @@
 # Squish 
 
-## [Live App](https://bug-tracker-lhdmt61az.vercel.app/)
+## [Live App](https://bug-tracker-epugcvg1l.vercel.app/)
 
 A bug tracker that allows for creating, updating, and marking bugs complete. As well as creating new users that have access to bugs that you create.
 
