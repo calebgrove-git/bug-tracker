@@ -43,13 +43,16 @@ select {
 }
 @media only screen and (max-width: 600px) {
   .create-user {
-    margin-left: 20vw;
-    width: 50vw;
-    margin-right: 10vw;
+    margin-left: 10vw;
+    width: 55vw;
   }
   .create-user form {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    height: 50vh;
+  }
+  .create-user input {
+    height: 30px;
   }
 }

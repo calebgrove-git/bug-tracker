@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './login.css';
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../Reducers/authentication';
-import { fetchUsers, createUser } from '../Reducers/user';
+import { handleRefresh, login } from '../Reducers/authentication';
+import { fetchUsers, createUser, handleUserRefresh } from '../Reducers/user';
 
 export default (props) => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const [formInput, setFormInput] = useState({
@@ -19,8 +21,11 @@ export default (props) => {
   });
   const [create, setCreate] = useState(false);
   useEffect(() => {
+    dispatch(handleUserRefresh());
+    dispatch(handleRefresh());
     dispatch(login(user));
-  }, [user, dispatch]);
+    history.push('/');
+  }, [user, dispatch, history]);
   function input(e) {
     setFormInput({
       ...formInput,

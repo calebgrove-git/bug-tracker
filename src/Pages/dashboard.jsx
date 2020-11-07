@@ -10,7 +10,6 @@ export default () => {
   const history = useHistory();
   const [bugState] = useState(bugs);
   const bool = bugState !== bugs;
-  console.log(bool);
   useEffect(() => {
     dispatch(fetchBugs(user.company));
   }, [dispatch, bool, user.company]);

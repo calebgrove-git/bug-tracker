@@ -34,9 +34,7 @@ export function fetchUsers(email, password) {
         alert(data.error.message);
       }
       dispatch(getUser(data));
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 }
 export function logoutUser() {
@@ -58,5 +56,20 @@ export function createUser(userInfo) {
       }
     );
     return data;
+  };
+}
+
+export function handleUserRefresh() {
+  return (dispatch) => {
+    if (sessionStorage.getItem('userid')) {
+      const userData = {
+        id: sessionStorage.getItem('userid'),
+        email: sessionStorage.getItem('useremail'),
+        password: sessionStorage.getItem('userpass'),
+        admin: sessionStorage.getItem('useradmin'),
+        company: sessionStorage.getItem('usercompany'),
+      };
+      dispatch(getUser(userData));
+    }
   };
 }
